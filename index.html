@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page with Overlays and Inlays</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>Welcome to Our Website</h1>
+            <button class="menu-btn" id="menuBtn">Menu</button>
+        </header>
+        <nav class="side-nav" id="sideNav">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="home">
+                <h2>Home</h2>
+                <p>Welcome to our homepage. Navigate through the menu to explore more.</p>
+            </section>
+            <section id="services">
+                <h2>Services</h2>
+                <p>Learn more about the services we offer.</p>
+            </section>
+            <section id="about">
+                <h2>About Us</h2>
+                <p>Discover our story and meet the team.</p>
+            </section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Get in touch with us.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sideNav = document.getElementById('sideNav');
+        const overlay = document.getElementById('overlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            sideNav.classList.add('open');
+            overlay.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sideNav.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        overlay.addEventListener('click', () => {
+            sideNav.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sideNav.classList.remove('open');
+                overlay.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
